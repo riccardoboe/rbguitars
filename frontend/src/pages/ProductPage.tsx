@@ -1,22 +1,22 @@
-import { Helmet } from 'react-helmet-async'
-import { useParams } from 'react-router-dom'
-import { useGetProductDetailsBySlugQuery } from '../hooks/productHooks'
-import LoadingBox from '../components/LoadingBox'
-import MessageBox from '../components/MessageBox'
-import { getError } from '../utils'
-import { ApiError } from '../types/ApiError'
-import { Badge, Button, Card, Col, ListGroup, Row } from 'react-bootstrap'
-import Rating from '../components/Rating'
+import { Helmet } from 'react-helmet-async';
+import { useParams } from 'react-router-dom';
+import { useGetProductDetailsBySlugQuery } from '../hooks/productHooks';
+import LoadingBox from '../components/LoadingBox';
+import MessageBox from '../components/MessageBox';
+import { getError } from '../utils';
+import { ApiError } from '../types/ApiError';
+import { Badge, Button, Card, Col, ListGroup, Row } from 'react-bootstrap';
+import Rating from '../components/Rating';
 
 export const ProductPage = () => {
-  const params = useParams()
-  const { slug } = params
+  const params = useParams();
+  const { slug } = params;
 
   const {
     data: product,
     isLoading,
     error,
-  } = useGetProductDetailsBySlugQuery(slug!)
+  } = useGetProductDetailsBySlugQuery(slug!);
   return isLoading ? (
     <LoadingBox />
   ) : error ? (
@@ -35,6 +35,7 @@ export const ProductPage = () => {
             <ListGroup.Item>
               <Helmet>
                 <title>RBG {product.name}</title>
+                <link rel="icon" href="./rbguitarslogo2.png" />
               </Helmet>
               <h1>{product.name}</h1>
             </ListGroup.Item>
@@ -69,7 +70,7 @@ export const ProductPage = () => {
                 {product.countInStock > 0 && (
                   <ListGroup.Item>
                     <div className="d-grid">
-                      <Button variant="dark">Add to Cart</Button>
+                      <Button variant="success">Add to Cart</Button>
                     </div>
                   </ListGroup.Item>
                 )}
@@ -79,5 +80,5 @@ export const ProductPage = () => {
         </Col>
       </Row>
     </div>
-  )
-}
+  );
+};

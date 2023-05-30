@@ -1,4 +1,4 @@
-import { Product } from './types/Product'
+import { Product } from './types/Product';
 
 export const sampleProducts: Product[] = [
   {
@@ -49,4 +49,4 @@ export const sampleProducts: Product[] = [
     numReviews: 30,
     description: 'electric amplifier description',
   },
-]
+];

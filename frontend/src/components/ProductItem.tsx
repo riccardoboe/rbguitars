@@ -1,7 +1,7 @@
-import { Button, Card } from 'react-bootstrap'
-import { Product } from '../types/Product'
-import { Link } from 'react-router-dom'
-import Rating from './Rating'
+import { Button, Card } from 'react-bootstrap';
+import { Product } from '../types/Product';
+import { Link } from 'react-router-dom';
+import Rating from './Rating';
 
 function ProductItem({ product }: { product: Product }) {
   return (
@@ -28,7 +28,7 @@ function ProductItem({ product }: { product: Product }) {
         )}
       </Card.Body>
     </Card>
-  )
+  );
 }
 
-export default ProductItem
+export default ProductItem;

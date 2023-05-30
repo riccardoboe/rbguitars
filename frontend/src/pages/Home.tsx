@@ -1,14 +1,14 @@
-import { Row, Col } from 'react-bootstrap'
-import { Helmet } from 'react-helmet-async'
-import LoadingBox from '../components/LoadingBox'
-import MessageBox from '../components/MessageBox'
-import ProductItem from '../components/ProductItem'
-import { useGetProductsQuery } from '../hooks/productHooks'
-import { getError } from '../utils'
-import { ApiError } from '../types/ApiError'
+import { Row, Col } from 'react-bootstrap';
+import { Helmet } from 'react-helmet-async';
+import LoadingBox from '../components/LoadingBox';
+import MessageBox from '../components/MessageBox';
+import ProductItem from '../components/ProductItem';
+import { useGetProductsQuery } from '../hooks/productHooks';
+import { getError } from '../utils';
+import { ApiError } from '../types/ApiError';
 
 export default function Home() {
-  const { data: products, isLoading, error } = useGetProductsQuery()
+  const { data: products, isLoading, error } = useGetProductsQuery();
 
   return isLoading ? (
     <LoadingBox />
@@ -25,5 +25,5 @@ export default function Home() {
         </Col>
       ))}
     </Row>
-  )
+  );
 }

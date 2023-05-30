@@ -1,21 +1,21 @@
-import { useContext, useEffect } from 'react'
-import { Outlet } from 'react-router-dom'
-import { Navbar, Container, Nav, Row, Col, Button } from 'react-bootstrap'
-import { Store } from './Store'
+import { useContext, useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
+import { Navbar, Container, Nav, Row, Col, Button } from 'react-bootstrap';
+import { Store } from './Store';
 
 function App() {
   const {
     state: { mode },
     dispatch,
-  } = useContext(Store)
+  } = useContext(Store);
 
   useEffect(() => {
-    document.body.setAttribute('data-bs-theme', mode)
-  }, [mode])
+    document.body.setAttribute('data-bs-theme', mode);
+  }, [mode]);
 
   const switchModeHandler = () => {
-    dispatch({ type: 'SWITCH_MODE' })
-  }
+    dispatch({ type: 'SWITCH_MODE' });
+  };
 
   return (
     <div className="d-flex flex-column vh-100 ">
@@ -51,7 +51,7 @@ function App() {
         <div className="text-center">footer</div>
       </footer>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

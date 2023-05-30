@@ -1,9 +1,9 @@
 function Rating(props: {
-  rating: number
-  numReviews?: number
-  caption?: string
+  rating: number;
+  numReviews?: number;
+  caption?: string;
 }) {
-  const { rating, numReviews, caption } = props
+  const { rating, numReviews, caption } = props;
   return (
     <div className="rating">
       <span>
@@ -70,7 +70,7 @@ function Rating(props: {
         ''
       )}
     </div>
-  )
+  );
 }
 
-export default Rating
+export default Rating;
