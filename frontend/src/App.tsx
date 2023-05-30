@@ -5,7 +5,7 @@ import { sampleProducts } from './data'
 function App() {
   return (
     <div>
-      <header>RBguitars</header>
+      <header>RBguitars.</header>
       <main>
         <ul>
           {sampleProducts.map((product) => (
