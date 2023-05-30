@@ -33,8 +33,8 @@ export const sampleProducts: Product[] = [
     price: 550,
     countInStock: 10,
     brand: 'Ibanez',
-    rating: 4,
-    numReviews: 25,
+    rating: 0,
+    numReviews: 0,
     description: 'electric bass description',
   },
   {

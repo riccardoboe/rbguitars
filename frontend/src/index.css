@@ -22,10 +22,6 @@
   object-fit: cover;
 }
 
-.rating span {
-  color: black;
-}
-
 img.large {
   max-width: 100%;
 }
