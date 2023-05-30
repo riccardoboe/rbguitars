@@ -23,5 +23,9 @@
 }
 
 .rating span {
-  color: gold;
+  color: black;
+}
+
+img.large {
+  max-width: 100%;
 }
