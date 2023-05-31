@@ -1,11 +1,22 @@
 import { useContext, useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
-import { Navbar, Container, Nav, Row, Col, Button } from 'react-bootstrap';
+import { Link, Outlet } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {
+  Navbar,
+  Container,
+  Nav,
+  Row,
+  Col,
+  Button,
+  Badge,
+} from 'react-bootstrap';
 import { Store } from './Store';
 
 function App() {
   const {
-    state: { mode },
+    state: { mode, cart },
     dispatch,
   } = useContext(Store);
 
@@ -19,11 +30,18 @@ function App() {
 
   return (
     <div className="d-flex flex-column vh-100 ">
+      <ToastContainer position="bottom-center" limit={1} />
       <header>
-        <Navbar expand="lg">
-          <Container>
-            <Navbar.Brand>RBguitars.</Navbar.Brand>
-          </Container>
+        <Navbar
+          expand="lg"
+          className="d-flex justify-content-between align-items-center"
+        >
+          <LinkContainer to="/">
+            <Navbar.Brand>
+              &nbsp;
+              <img src="../images/rbguitarslogo2.png" /> RBGuitars.
+            </Navbar.Brand>
+          </LinkContainer>
           <Nav>
             <Button variant={mode} onClick={switchModeHandler}>
               <i
@@ -33,11 +51,16 @@ function App() {
               ></i>
             </Button>
 
-            <a href="/cart" className="nav-link">
-              Cart
-            </a>
+            <Link to="/cart" className="nav-link">
+              <i className="fa fa-shopping-cart"></i>{' '}
+              {cart.cartItems.length > 0 && (
+                <Badge pill bg="success">
+                  {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                </Badge>
+              )}
+            </Link>
             <a href="/signin" className="nav-link">
-              Sing in
+              <i className="fa fa-user"></i>
             </a>
           </Nav>
         </Navbar>
