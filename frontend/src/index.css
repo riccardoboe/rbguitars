@@ -37,3 +37,7 @@ img.thumbnail {
   margin-top: 50px;
   text-align: center;
 }
+
+.small-container {
+  max-width: 600px;
+}

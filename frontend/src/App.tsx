@@ -11,12 +11,13 @@ import {
   Col,
   Button,
   Badge,
+  NavDropdown,
 } from 'react-bootstrap';
 import { Store } from './Store';
 
 function App() {
   const {
-    state: { mode, cart },
+    state: { mode, cart, userInfo },
     dispatch,
   } = useContext(Store);
 
@@ -26,6 +27,15 @@ function App() {
 
   const switchModeHandler = () => {
     dispatch({ type: 'SWITCH_MODE' });
+  };
+
+  const signoutHandler = () => {
+    dispatch({ type: 'USER_SIGNOUT' });
+    localStorage.removeItem('userInfo');
+    localStorage.removeItem('cartItems');
+    localStorage.removeItem('shippingAddress');
+    localStorage.removeItem('paymentMethod');
+    window.location.href = '/signin';
   };
 
   return (
@@ -59,9 +69,21 @@ function App() {
                 </Badge>
               )}
             </Link>
-            <a href="/signin" className="nav-link">
-              <i className="fa fa-user"></i>
-            </a>
+            {userInfo ? (
+              <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
+                <Link
+                  className="dropdown-item"
+                  to="#signout"
+                  onClick={signoutHandler}
+                >
+                  <i className="fa-solid fa-right-to-bracket"></i>
+                </Link>
+              </NavDropdown>
+            ) : (
+              <Link className="nav-link" to="/signin">
+                <i className="fa fa-user"></i>
+              </Link>
+            )}
           </Nav>
         </Navbar>
       </header>
