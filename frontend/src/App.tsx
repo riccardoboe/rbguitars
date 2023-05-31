@@ -93,7 +93,7 @@ function App() {
         </Container>
       </main>
       <footer>
-        <div className="text-center">footer</div>
+        <div className="text-center"></div>
       </footer>
     </div>
   );

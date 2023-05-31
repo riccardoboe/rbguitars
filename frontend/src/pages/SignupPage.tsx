@@ -1,32 +1,44 @@
 import { useContext, useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button, Container, Form } from 'react-bootstrap';
-import { useSigninMutation } from '../hooks/userHooks';
-import { toast } from 'react-toastify';
-import { Store } from '../Store';
-import { getError } from '../utils';
-import { ApiError } from '../types/ApiError';
 import { Helmet } from 'react-helmet-async';
-import LoadingBox from '../components/LoadingBox';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { useSignupMutation } from '../hooks/userHooks';
+import { Store } from '../Store';
+import { ApiError } from '../types/ApiError';
+import { getError } from '../utils';
 
-export default function SigninPage() {
+export default function SignupPage() {
   const navigate = useNavigate();
   const { search } = useLocation();
   const redirectInUrl = new URLSearchParams(search).get('redirect');
   const redirect = redirectInUrl ? redirectInUrl : '/';
 
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const { state, dispatch } = useContext(Store);
   const { userInfo } = state;
 
-  const { mutateAsync: signin, isLoading } = useSigninMutation();
+  useEffect(() => {
+    if (userInfo) {
+      navigate(redirect);
+    }
+  }, [navigate, redirect, userInfo]);
+
+  const { mutateAsync: signup, isLoading } = useSignupMutation();
 
   const submitHandler = async (e: React.SyntheticEvent) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      toast.error('Passwords do not match');
+      return;
+    }
     try {
-      const data = await signin({
+      const data = await signup({
+        name,
         email,
         password,
       });
@@ -38,34 +50,34 @@ export default function SigninPage() {
     }
   };
 
-  useEffect(() => {
-    if (userInfo) {
-      navigate(redirect);
-    }
-  }, [navigate, redirect, userInfo]);
-
   return (
     <Container className="small-container">
       <Helmet>
-        <title>RBG Sign In</title>
+        <title>RBG Sign Up</title>
       </Helmet>
       <h1 style={{ textAlign: 'center', marginBottom: '50px' }}>
-        Sign in to your account
+        Sign up your new account
       </h1>
       <Form onSubmit={submitHandler}>
+        {/* NAME */}
+        <Form.Group className="mb-3" controlId="name">
+          <Form.Label>Your name:</Form.Label>
+          <Form.Control onChange={(e) => setName(e.target.value)} required />
+        </Form.Group>
+
         {/* EMAIL */}
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>Your email:</Form.Label>
           <Form.Control
             type="email"
-            required
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </Form.Group>
 
         {/* PASSWORD */}
         <Form.Group className="mb-3" controlId="password">
-          <Form.Label>Your password:</Form.Label>
+          <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
             required
@@ -73,22 +85,22 @@ export default function SigninPage() {
           />
         </Form.Group>
 
-        {/* BUTTON */}
-        <Form.Group className="mb-3" controlId="password">
-          <div
-            className="mb-3"
-            style={{ textAlign: 'center', padding: '25px' }}
-          >
-            <Button disabled={isLoading} type="submit">
-              Sign In
-            </Button>
-            {isLoading && <LoadingBox />}
-          </div>
-          <div className="mb-3" style={{ textAlign: 'center' }}>
-            New here?{' '}
-            <Link to={`/signup?redirect=${redirect}`}>Create an account</Link>
-          </div>
+        <Form.Group className="mb-3" controlId="confirmPassword">
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Control
+            type="password"
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
         </Form.Group>
+
+        <div className="mb-3" style={{ textAlign: 'center', padding: '25px' }}>
+          <Button type="submit">Create Account</Button>
+        </div>
+        <div className="mb-3" style={{ textAlign: 'center' }}>
+          Already have an account?{' '}
+          <Link to={`/signin?redirect=${redirect}`}>Sign in</Link>
+        </div>
       </Form>
     </Container>
   );
