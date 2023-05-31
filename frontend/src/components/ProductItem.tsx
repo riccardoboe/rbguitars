@@ -1,32 +1,32 @@
-import { useContext } from 'react';
-import { Button, Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { Store } from '../Store';
-import { CartItem } from '../types/Cart';
-import { Product } from '../types/Product';
-import { convertProductToCartItem } from '../utils';
-import Rating from './Rating';
+import { useContext } from 'react'
+import { Button, Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import { Store } from '../Store'
+import { CartItem } from '../types/Cart'
+import { Product } from '../types/Product'
+import { convertProductToCartItem } from '../utils'
+import Rating from './Rating'
 
 function ProductItem({ product }: { product: Product }) {
-  const { state, dispatch } = useContext(Store);
+  const { state, dispatch } = useContext(Store)
   const {
     cart: { cartItems },
-  } = state;
+  } = state
 
   const addToCartHandler = (item: CartItem) => {
-    const existItem = cartItems.find((x) => x._id === product._id);
-    const quantity = existItem ? existItem.quantity + 1 : 1;
+    const existItem = cartItems.find((x) => x._id === product._id)
+    const quantity = existItem ? existItem.quantity + 1 : 1
     if (product.countInStock < quantity) {
-      alert(' Product out of stock');
-      return;
+      alert(' Product out of stock')
+      return
     }
     dispatch({
       type: 'CART_ADD_ITEM',
       payload: { ...item, quantity },
-    });
-    toast.success('Successfully added to the cart');
-  };
+    })
+    toast.success('Successfully added to the cart')
+  }
 
   return (
     <Card>
@@ -57,7 +57,7 @@ function ProductItem({ product }: { product: Product }) {
         )}
       </Card.Body>
     </Card>
-  );
+  )
 }
 
-export default ProductItem;
+export default ProductItem

@@ -1,5 +1,5 @@
-import jwt from 'jsonwebtoken';
-import { User } from './models/userModel';
+import jwt from 'jsonwebtoken'
+import { User } from './models/userModel'
 
 export const generateToken = (user: User) => {
   return jwt.sign(
@@ -13,5 +13,5 @@ export const generateToken = (user: User) => {
     {
       expiresIn: '30d',
     }
-  );
-};
+  )
+}

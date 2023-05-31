@@ -1,8 +1,8 @@
-import { useContext, useEffect } from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import { LinkContainer } from 'react-router-bootstrap';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useContext, useEffect } from 'react'
+import { Link, Outlet } from 'react-router-dom'
+import { LinkContainer } from 'react-router-bootstrap'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import {
   Navbar,
   Container,
@@ -12,31 +12,31 @@ import {
   Button,
   Badge,
   NavDropdown,
-} from 'react-bootstrap';
-import { Store } from './Store';
+} from 'react-bootstrap'
+import { Store } from './Store'
 
 function App() {
   const {
     state: { mode, cart, userInfo },
     dispatch,
-  } = useContext(Store);
+  } = useContext(Store)
 
   useEffect(() => {
-    document.body.setAttribute('data-bs-theme', mode);
-  }, [mode]);
+    document.body.setAttribute('data-bs-theme', mode)
+  }, [mode])
 
   const switchModeHandler = () => {
-    dispatch({ type: 'SWITCH_MODE' });
-  };
+    dispatch({ type: 'SWITCH_MODE' })
+  }
 
   const signoutHandler = () => {
-    dispatch({ type: 'USER_SIGNOUT' });
-    localStorage.removeItem('userInfo');
-    localStorage.removeItem('cartItems');
-    localStorage.removeItem('shippingAddress');
-    localStorage.removeItem('paymentMethod');
-    window.location.href = '/signin';
-  };
+    dispatch({ type: 'USER_SIGNOUT' })
+    localStorage.removeItem('userInfo')
+    localStorage.removeItem('cartItems')
+    localStorage.removeItem('shippingAddress')
+    localStorage.removeItem('paymentMethod')
+    window.location.href = '/signin'
+  }
 
   return (
     <div className="d-flex flex-column vh-100 ">
@@ -96,7 +96,7 @@ function App() {
         <div className="text-center"></div>
       </footer>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

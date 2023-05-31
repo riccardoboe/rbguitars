@@ -1,14 +1,14 @@
-import { useContext } from 'react';
-import { Button, Card, Col, ListGroup, Row } from 'react-bootstrap';
-import { Helmet } from 'react-helmet-async';
-import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import MessageBox from '../components/MessageBox';
-import { Store } from '../Store';
-import { CartItem } from '../types/Cart';
+import { useContext } from 'react'
+import { Button, Card, Col, ListGroup, Row } from 'react-bootstrap'
+import { Helmet } from 'react-helmet-async'
+import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import MessageBox from '../components/MessageBox'
+import { Store } from '../Store'
+import { CartItem } from '../types/Cart'
 
 export default function CartPage() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const {
     state: {
@@ -16,25 +16,25 @@ export default function CartPage() {
       cart: { cartItems },
     },
     dispatch,
-  } = useContext(Store);
+  } = useContext(Store)
 
   const updateCartHandler = (item: CartItem, quantity: number) => {
     if (item.countInStock < quantity) {
-      toast.warn('Sorry. Product is out of stock');
-      return;
+      toast.warn('Sorry. Product is out of stock')
+      return
     }
     dispatch({
       type: 'CART_ADD_ITEM',
       payload: { ...item, quantity },
-    });
-  };
+    })
+  }
   const checkoutHandler = () => {
-    navigate('/signin?redirect=/shipping');
-  };
+    navigate('/signin?redirect=/shipping')
+  }
 
   const removeItemHandler = (item: CartItem) => {
-    dispatch({ type: 'CART_REMOVE_ITEM', payload: item });
-  };
+    dispatch({ type: 'CART_REMOVE_ITEM', payload: item })
+  }
 
   return (
     <div>
@@ -124,5 +124,5 @@ export default function CartPage() {
         </Col>
       </Row>
     </div>
-  );
+  )
 }

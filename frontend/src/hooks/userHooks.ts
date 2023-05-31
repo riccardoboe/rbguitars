@@ -1,6 +1,6 @@
-import { useMutation } from '@tanstack/react-query';
-import apiClient from '../apiClient';
-import { UserInfo } from '../types/UserInfo';
+import { useMutation } from '@tanstack/react-query'
+import apiClient from '../apiClient'
+import { UserInfo } from '../types/UserInfo'
 
 export const useSigninMutation = () =>
   useMutation({
@@ -8,8 +8,8 @@ export const useSigninMutation = () =>
       email,
       password,
     }: {
-      email: string;
-      password: string;
+      email: string
+      password: string
     }) =>
       (
         await apiClient.post<UserInfo>(`/api/users/signin`, {
@@ -17,7 +17,7 @@ export const useSigninMutation = () =>
           password,
         })
       ).data,
-  });
+  })
 
 export const useSignupMutation = () =>
   useMutation({
@@ -26,9 +26,9 @@ export const useSignupMutation = () =>
       email,
       password,
     }: {
-      name: string;
-      email: string;
-      password: string;
+      name: string
+      email: string
+      password: string
     }) =>
       (
         await apiClient.post<UserInfo>(`api/users/signup`, {
@@ -37,4 +37,4 @@ export const useSignupMutation = () =>
           password,
         })
       ).data,
-  });
+  })

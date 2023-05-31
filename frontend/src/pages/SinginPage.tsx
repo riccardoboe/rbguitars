@@ -1,48 +1,48 @@
-import { useContext, useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Button, Container, Form } from 'react-bootstrap';
-import { useSigninMutation } from '../hooks/userHooks';
-import { toast } from 'react-toastify';
-import { Store } from '../Store';
-import { getError } from '../utils';
-import { ApiError } from '../types/ApiError';
-import { Helmet } from 'react-helmet-async';
-import LoadingBox from '../components/LoadingBox';
+import { useContext, useEffect, useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Button, Container, Form } from 'react-bootstrap'
+import { useSigninMutation } from '../hooks/userHooks'
+import { toast } from 'react-toastify'
+import { Store } from '../Store'
+import { getError } from '../utils'
+import { ApiError } from '../types/ApiError'
+import { Helmet } from 'react-helmet-async'
+import LoadingBox from '../components/LoadingBox'
 
 export default function SigninPage() {
-  const navigate = useNavigate();
-  const { search } = useLocation();
-  const redirectInUrl = new URLSearchParams(search).get('redirect');
-  const redirect = redirectInUrl ? redirectInUrl : '/';
+  const navigate = useNavigate()
+  const { search } = useLocation()
+  const redirectInUrl = new URLSearchParams(search).get('redirect')
+  const redirect = redirectInUrl ? redirectInUrl : '/'
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
-  const { state, dispatch } = useContext(Store);
-  const { userInfo } = state;
+  const { state, dispatch } = useContext(Store)
+  const { userInfo } = state
 
-  const { mutateAsync: signin, isLoading } = useSigninMutation();
+  const { mutateAsync: signin, isLoading } = useSigninMutation()
 
   const submitHandler = async (e: React.SyntheticEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
       const data = await signin({
         email,
         password,
-      });
-      dispatch({ type: 'USER_SIGNIN', payload: data });
-      localStorage.setItem('userInfo', JSON.stringify(data));
-      navigate(redirect);
+      })
+      dispatch({ type: 'USER_SIGNIN', payload: data })
+      localStorage.setItem('userInfo', JSON.stringify(data))
+      navigate(redirect)
     } catch (err) {
-      toast.error(getError(err as ApiError));
+      toast.error(getError(err as ApiError))
     }
-  };
+  }
 
   useEffect(() => {
     if (userInfo) {
-      navigate(redirect);
+      navigate(redirect)
     }
-  }, [navigate, redirect, userInfo]);
+  }, [navigate, redirect, userInfo])
 
   return (
     <Container className="small-container">
@@ -91,5 +91,5 @@ export default function SigninPage() {
         </Form.Group>
       </Form>
     </Container>
-  );
+  )
 }
