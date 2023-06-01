@@ -9,16 +9,17 @@ import {
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { HelmetProvider } from 'react-helmet-async'
-
+import { StoreProvider } from './Store.tsx'
 import App from './App.tsx'
 import './index.css'
 
 import Home from './pages/HomePage.tsx'
 import { ProductPage } from './pages/ProductPage.tsx'
-import { StoreProvider } from './Store.tsx'
 import CartPage from './pages/CartPage.tsx'
 import SigninPage from './pages/SinginPage.tsx'
 import SignupPage from './pages/SignupPage.tsx'
+import ShippingAddressPage from './pages/ShippingAddressPage.tsx'
+import PaymentMethodPage from './pages/PaymentMethodPage'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,6 +29,8 @@ const router = createBrowserRouter(
       <Route path="cart" element={<CartPage />} />
       <Route path="signin" element={<SigninPage />} />
       <Route path="signup" element={<SignupPage />} />
+      <Route path="shipping" element={<ShippingAddressPage />} />
+      <Route path="payment" element={<PaymentMethodPage />} />
       {/* <Route path="dashboard" element={<Dashboard />} /> */}
       {/* ... etc. */}
     </Route>

@@ -95,7 +95,9 @@ export default function SignupPage() {
         </Form.Group>
 
         <div className="mb-3" style={{ textAlign: 'center', padding: '25px' }}>
-          <Button type="submit">Create Account</Button>
+          <Button type="submit" variant="success">
+            Create Account
+          </Button>
         </div>
         <div className="mb-3" style={{ textAlign: 'center' }}>
           Already have an account?{' '}

@@ -79,7 +79,7 @@ export default function SigninPage() {
             className="mb-3"
             style={{ textAlign: 'center', padding: '25px' }}
           >
-            <Button disabled={isLoading} type="submit">
+            <Button disabled={isLoading} type="submit" variant="success">
               Sign In
             </Button>
             {isLoading && <LoadingBox />}

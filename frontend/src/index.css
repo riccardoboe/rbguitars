@@ -41,3 +41,18 @@ img.thumbnail {
 .small-container {
   max-width: 600px;
 }
+
+.checkout-steps > div {
+  border-bottom: 0.2rem solid rgb(107, 107, 107);
+  color: rgb(107, 107, 107);
+}
+
+.checkout-steps > div.active {
+  border-bottom: 0.2rem solid #198754;
+  color: #198754;
+}
+
+/* input[type='radio']:checked {
+  accent-color: #198754;
+  background: #198754;
+} */
