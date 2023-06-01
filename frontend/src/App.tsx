@@ -70,13 +70,22 @@ function App() {
               )}
             </Link>
             {userInfo ? (
-              <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
+              <NavDropdown
+                title={userInfo.name}
+                id="basic-nav-dropdown"
+                className="dropdown-menu-start"
+              >
+                <LinkContainer to="/orderhistory">
+                  <NavDropdown.Item>
+                    <i className="fa-solid fa-receipt"> Orders</i>
+                  </NavDropdown.Item>
+                </LinkContainer>
                 <Link
                   className="dropdown-item"
                   to="#signout"
                   onClick={signoutHandler}
                 >
-                  <i className="fa-solid fa-right-to-bracket"></i>
+                  <i className="fa-solid fa-right-to-bracket"> Logout</i>
                 </Link>
               </NavDropdown>
             ) : (

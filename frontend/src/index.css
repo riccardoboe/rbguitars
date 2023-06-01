@@ -56,3 +56,9 @@ img.thumbnail {
   accent-color: #198754;
   background: #198754;
 } */
+
+.dropdown-menu[data-bs-popper] {
+  left: auto;
+  right: 5px;
+  text-align: center;
+}

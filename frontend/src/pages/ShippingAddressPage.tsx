@@ -111,7 +111,7 @@ export default function ShippingAddressPage() {
               value={country}
               onChange={(e) => setCountry(e.target.value)}
               required
-              placeholder="USA"
+              placeholder="United States"
             />
           </Form.Group>
 

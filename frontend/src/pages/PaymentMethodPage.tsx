@@ -40,23 +40,10 @@ export default function PaymentMethodPage() {
           {/* PAYPAL SELECT */}
           <div className="mb-3">
             <Form.Check
-              type="radio"
               id="PayPal"
               label="PayPal"
               value="PayPal"
               checked={paymentMethod === 'PayPal'}
-              onChange={(e) => setPaymentMethodName(e.target.value)}
-            />
-          </div>
-
-          {/* STRIPE SELECT */}
-          <div className="mb-3">
-            <Form.Check
-              type="radio"
-              id="Stripe"
-              label="Stripe"
-              value="Stripe"
-              checked={paymentMethod === 'Stripe'}
               onChange={(e) => setPaymentMethodName(e.target.value)}
             />
           </div>
