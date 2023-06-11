@@ -2,8 +2,7 @@
 
 ## Description
 
-This app is an eccomerce store for selling music instruments.  
-It serves as a virtual storefront where customers can browse and purchase items, make payments, and complete transactions without the need for physical interaction.
+This app is an eccomerce store for selling music instruments. it serves as a virtual storefront where customers can browse and purchase items, make payments, and complete transactions without the need for physical interaction.
 <a href="https://rbguitars.onrender.com/" target="_blank"> Live Demo </a>
 
 ### Features
