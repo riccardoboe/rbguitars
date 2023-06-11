@@ -48,8 +48,8 @@ img.thumbnail {
 }
 
 .checkout-steps > div.active {
-  border-bottom: 0.2rem solid #198754;
-  color: #198754;
+  border-bottom: 0.2rem solid #7c00d5;
+  color: #7c00d5;
 }
 
 .dropdown-menu[data-bs-popper] {
@@ -96,7 +96,7 @@ a.header-link:hover,
 
 .cart-badge {
   position: absolute;
-  color: #198754;
+  color: #7c00d5;
   font-weight: bold;
   margin-left: 16px;
   margin-top: -3px;
@@ -104,7 +104,7 @@ a.header-link:hover,
 
 .btn-primary,
 .btn-outline-primary {
-  background-color: #198754;
+  background-color: #7c00d5;
   color: #fff;
 }
 
@@ -142,4 +142,53 @@ a.header-link:hover,
 
 button.side-navbar-user:hover {
   color: white;
+}
+
+.home-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+
+  position: relative;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.home-background-container {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-left: 1px solid #7c00d5;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border-radius: 7px;
+  padding: 15px;
+  color: white !important;
+  text-align: center !important;
+}
+
+.home-background-container p {
+  text-align: justify !important;
+  color: lightgray;
+}
+
+.link {
+  color: var(--background);
+  font-weight: bold;
+
+  background-image: linear-gradient(to right, #7c00d5, #7c00d5 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: -100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.link:hover {
+  background-position: 0;
 }

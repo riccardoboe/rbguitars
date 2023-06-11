@@ -84,9 +84,21 @@ export default function SigninPage() {
             </Button>
             {isLoading && <LoadingBox />}
           </div>
-          <div className="mb-3" style={{ textAlign: 'center' }}>
+          <div className="mb-5" style={{ textAlign: 'center' }}>
             New here?{' '}
             <Link to={`/signup?redirect=${redirect}`}>Create an account</Link>
+          </div>
+
+          <div
+            className="mb-3"
+            style={{ textAlign: 'center', fontWeight: '200', color: 'gray' }}
+          >
+            &darr; Demo account &darr;
+            <br />
+            <strong>
+              email: user@mail.com <br />
+              password: secret123
+            </strong>
           </div>
         </Form.Group>
       </Form>

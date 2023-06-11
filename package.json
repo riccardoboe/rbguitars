@@ -1,12 +1,12 @@
 {
   "name": "rbguitars",
   "version": "1.0.0",
-  "description": "",
+  "description": "rbg ecommerce website",
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"npm run dev --prefix backend\"  \"npm run dev --prefix frontend\" ",
     "build": "cd backend && npm install && npm run build  && cd ../frontend && npm install && npm run build",
-    "start": "TG_ALLOW_MIXED=ALLOW  node backend/build/index.js",
+    "start": "node backend/build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,5 +21,6 @@
   "homepage": "https://github.com/riccardoboe/rbguitars#readme",
   "devDependencies": {
     "concurrently": "^8.1.0"
-  }
+  },
+  "dependencies": {}
 }

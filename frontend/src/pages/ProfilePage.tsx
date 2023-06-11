@@ -43,7 +43,7 @@ export default function ProfilePage() {
       <Helmet>
         <title>User Profile</title>
       </Helmet>
-      <h1 className="my-3">User Profile</h1>
+      <h1 className="my-3">Update your profile</h1>
       <form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="name">
           <Form.Label>Name</Form.Label>
@@ -77,7 +77,7 @@ export default function ProfilePage() {
           />
         </Form.Group>
         <div className="mb-3">
-          <Button disabled={isLoading} type="submit">
+          <Button disabled={isLoading} type="submit" variant="success">
             Update
           </Button>
           {isLoading && <LoadingBox></LoadingBox>}

@@ -25,20 +25,20 @@ export default function OrderHistoryPage() {
         <table className="table">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>DATE</th>
+              <th>ORDER ID</th>
+              <th>PURCHASE DATE</th>
               <th>TOTAL</th>
-              <th>PAID</th>
-              <th>DELIVERED</th>
-              <th>ACTIONS</th>
+              <th>PAYMENT STATUS</th>
+              <th>DELIVERY STATUS</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             {orders!.map((order) => (
               <tr key={order._id}>
-                <td>{order._id}</td>
+                <td>#{order._id}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>
-                <td>{order.totalPrice.toFixed(2)}</td>
+                <td>${order.totalPrice.toFixed(2)}</td>
                 <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td>
                 <td>
                   {order.isDelivered

@@ -29,34 +29,38 @@ function ProductItem({ product }: { product: Product }) {
   }
 
   return (
-    <Card>
-      <Link to={`/product/${product.slug}`}>
-        <img
-          src={product.image}
-          className="card-img-top product-image"
-          alt={product.name}
-        />
-      </Link>
-      <Card.Body>
+    <div style={{ marginBottom: '2rem' }}>
+      <Card>
         <Link to={`/product/${product.slug}`}>
-          <Card.Title>{product.name}</Card.Title>
+          <img
+            src={product.image}
+            className="card-img-top product-image"
+            alt={product.name}
+          />
         </Link>
-        <Rating rating={product.rating} numReviews={product.numReviews} />
-        <Card.Text>$ {product.price}</Card.Text>
-        {product.countInStock === 0 ? (
-          <Button variant="light" disabled>
-            Out of stock
-          </Button>
-        ) : (
-          <Button
-            onClick={() => addToCartHandler(convertProductToCartItem(product))}
-            variant="success"
-          >
-            Add to cart
-          </Button>
-        )}
-      </Card.Body>
-    </Card>
+        <Card.Body>
+          <Link to={`/product/${product.slug}`}>
+            <Card.Title>{product.name}</Card.Title>
+          </Link>
+          <Rating rating={product.rating} numReviews={product.numReviews} />
+          <Card.Text>$ {product.price}</Card.Text>
+          {product.countInStock === 0 ? (
+            <Button variant="light" disabled>
+              Out of stock
+            </Button>
+          ) : (
+            <Button
+              onClick={() =>
+                addToCartHandler(convertProductToCartItem(product))
+              }
+              variant="success"
+            >
+              Add to cart
+            </Button>
+          )}
+        </Card.Body>
+      </Card>
+    </div>
   )
 }
 

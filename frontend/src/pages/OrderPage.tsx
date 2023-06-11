@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import {
   PayPalButtons,
   PayPalButtonsComponentProps,
@@ -23,6 +26,10 @@ import { getError } from '../utils'
 export default function OrderPage() {
   const { state } = useContext(Store)
   const { userInfo } = state
+  //delete this maybe
+  {
+    userInfo
+  }
 
   const params = useParams()
   const { id: orderId } = params
@@ -39,7 +46,7 @@ export default function OrderPage() {
   const testPayHandler = async () => {
     await payOrder({ orderId: orderId! })
     refetch()
-    toast.success('Order is paid successfully')
+    toast.success('Order paid successfully')
   }
 
   const [{ isPending, isRejected }, paypalDispatch] = usePayPalScriptReducer()
@@ -67,7 +74,7 @@ export default function OrderPage() {
 
   const paypalbuttonTransactionProps: PayPalButtonsComponentProps = {
     style: { layout: 'vertical' },
-    createOrder(data, actions) {
+    createOrder(_data, actions) {
       return actions.order
         .create({
           purchase_units: [
@@ -82,12 +89,12 @@ export default function OrderPage() {
           return orderID
         })
     },
-    onApprove(data, actions) {
+    onApprove(_data, actions) {
       return actions.order!.capture().then(async (details) => {
         try {
           await payOrder({ orderId: orderId!, ...details })
           refetch()
-          toast.success('Order is paid successfully')
+          toast.success('Order paid successfully')
         } catch (err) {
           toast.error(getError(err as ApiError))
         }
@@ -109,7 +116,7 @@ export default function OrderPage() {
       <Helmet>
         <title>RBG Order details</title>
       </Helmet>
-      <h1 className="my-3">Order: {orderId}</h1>
+      <h1 className="my-3">Order id: #{orderId}</h1>
       <Row>
         <Col md={12}>
           <Card className="mb-3">

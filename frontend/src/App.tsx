@@ -7,14 +7,14 @@ import {
   Navbar,
   Container,
   Nav,
-  Row,
-  Col,
+  // Row,
+  // Col,
   Button,
-  Badge,
+  // Badge,
   NavDropdown,
-  Form,
-  InputGroup,
-  FormControl,
+  // Form,
+  // InputGroup,
+  // FormControl,
   ListGroup,
 } from 'react-bootstrap'
 import { Store } from './Store'
@@ -23,7 +23,7 @@ import LoadingBox from './components/LoadingBox'
 import MessageBox from './components/MessageBox'
 import { getError } from './utils'
 import { ApiError } from './types/ApiError'
-import SearchBox from './components/SearchBox'
+// import SearchBox from './components/SearchBox'
 
 function App() {
   const {
@@ -53,6 +53,7 @@ function App() {
   const { data: categories, isLoading, error } = useGetCategoriesQuery()
 
   return (
+    // NAVBAR
     <div className="d-flex flex-column vh-100 ">
       <ToastContainer position="bottom-center" limit={1} />
       <header>
@@ -152,7 +153,7 @@ function App() {
             </Navbar.Collapse>
           </div>
           {/* SUBHEADER */}
-          <div className="sub-header">
+          {/* <div className="sub-header">
             <div className="d-flex">
               <Link
                 to="#"
@@ -171,7 +172,7 @@ function App() {
                 </Link>
               ))}
             </div>
-          </div>
+          </div> */}
           {/* END SUBHEADER */}
         </Navbar>
       </header>

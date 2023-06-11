@@ -15,6 +15,10 @@ export default function PlaceOrderPage() {
 
   const { state, dispatch } = useContext(Store)
   const { cart, userInfo } = state
+  //maybe delete this
+  {
+    userInfo
+  }
   const roundTo = (num: number) => Math.round(num * 100 + Number.EPSILON) / 100
 
   cart.itemsPrice = roundTo(
@@ -150,6 +154,7 @@ export default function PlaceOrderPage() {
                   <div className="d-grid">
                     <Button
                       type="button"
+                      variant="success"
                       onClick={placeOrderHandler}
                       disabled={cart.cartItems.length === 0 || isLoading}
                     >

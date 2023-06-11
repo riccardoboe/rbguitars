@@ -29,6 +29,10 @@ export default function SignupPage() {
   }, [navigate, redirect, userInfo])
 
   const { mutateAsync: signup, isLoading } = useSignupMutation()
+  //maybe delete this
+  {
+    isLoading
+  }
 
   const submitHandler = async (e: React.SyntheticEvent) => {
     e.preventDefault()
@@ -102,6 +106,13 @@ export default function SignupPage() {
         <div className="mb-3" style={{ textAlign: 'center' }}>
           Already have an account?{' '}
           <Link to={`/signin?redirect=${redirect}`}>Sign in</Link>
+        </div>
+
+        <div
+          className="mb-3"
+          style={{ textAlign: 'center', fontWeight: '200', color: 'gray' }}
+        >
+          Demo account available in sign in page
         </div>
       </Form>
     </Container>
