@@ -167,7 +167,7 @@ button.side-navbar-user:hover {
   backdrop-filter: blur(10px);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   border-radius: 7px;
-  padding: 15px;
+  padding: 20px;
   color: white !important;
   text-align: center !important;
 }
@@ -175,6 +175,21 @@ button.side-navbar-user:hover {
 .home-background-container p {
   text-align: justify !important;
   color: lightgray;
+}
+
+@media screen and (min-width: 2000px) {
+  .home-background-container {
+    top: 27%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .home-background-container {
+    padding: 40px;
+  }
+  .home-background-container p {
+    display: none;
+  }
 }
 
 .link {
